@@ -1,0 +1,17 @@
+{
+  // Enable auto imports in JS/TS
+  "javascript.suggest.autoImports": true,
+  "typescript.suggest.autoImports": true,
+
+  // Enable auto import suggestions from all files in your project
+  "autoimport.filesToScan": "**/*.{js,jsx,ts,tsx}",
+  "autoimport.autoImport": true,
+
+  // Optional: Format on save using Prettier
+  "editor.formatOnSave": true,
+  "editor.defaultFormatter": "esbenp.prettier-vscode",
+
+  // Optional: Enable JSX closing tag auto completion
+  "javascript.preferences.jsxAttributeCompletionStyle": "auto",
+  "editor.tabSize": 2
+}
