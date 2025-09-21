@@ -67,9 +67,65 @@ void insert_at_any_pos(Node *&head, Node *&tail, int val, int pos)
     temp->next = newnode;
 }
 
+void delete_at_any_pos(Node *head, int pos)
+{
+    Node *temp = head;
+    for (int i = 0; i < pos; i++)
+        temp = temp->next;
+
+    Node *delete_node = temp->next;
+    temp->next = delete_node->next;
+    delete delete_node;
+    sz--;
+}
+
+void delete_at_head(Node *&head)
+{
+    if (head == NULL)
+        return;
+
+    Node *delete_node = head;
+    head = head->next;
+    delete delete_node;
+    sz--;
+}
+
+void sort_list(Node *head)
+{
+    for (Node *i = head; i->next != NULL; i = i->next)
+    {
+        for (Node *j = i->next; j != NULL; j = j->next)
+        {
+            if (i->val > j->val)
+                swap(i->val, j->val);
+        }
+    }
+}
+
+void reverse_print(Node *head)
+{
+    if (head == NULL)
+        return;
+    reverse_print(head->next);
+    cout << head->val << " ";
+}
+
+void reverse_list(Node *&head, Node *curr)
+{
+    if (!curr->next)
+    {
+        head = curr;
+        return;
+    }
+
+    reverse_list(head, curr->next);
+
+    curr->next->next = curr;
+    curr->next = NULL;
+}
+
 void print_list(Node *head)
 {
-    cout << "Size = " << sz << endl;
     Node *temp = head;
     while (temp != NULL)
     {
@@ -93,8 +149,13 @@ int main()
     }
 
     print_list(head);
-    insert_at_any_pos(head, tail, 10, 5);
-    insert_at_head(head, 50);
+    // insert_at_any_pos(head, tail, 10, 50);
+    // insert_at_head(head, 50);
+    // delete_at_any_pos(head, 2);
+    // print_list(head);
+    // sort_list(head);
+    // reverse_print(head);
+    reverse_list(head, head);
     print_list(head);
 
     return 0;
