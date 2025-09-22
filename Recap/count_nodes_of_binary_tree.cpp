@@ -84,11 +84,23 @@ int count_leap(Node *root)
     }
 }
 
+int count_height(Node *root, int h)
+{
+    if (!root)
+        return 0;
+
+    int l = count_height(root->left, h + 1);
+    int r = count_height(root->right, h + 1);
+
+    return max(l, r) + 1;
+}
+
 int main()
 {
     Node *root = input_binary_tree();
 
     cout << "Nodes = " << count_nodes(root) << endl;
     cout << "Leaps = " << count_leap(root) << endl;
+    cout << "Height = " << count_height(root, 0) << endl;
     return 0;
 }
