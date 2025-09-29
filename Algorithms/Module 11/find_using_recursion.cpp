@@ -6,8 +6,8 @@ int find(int node)
 {
     if (par[node] == -1)
         return node;
-    node = par[node];
-    int leader = find(node);
+
+    int leader = find(par[node]);
     return leader;
 }
 
